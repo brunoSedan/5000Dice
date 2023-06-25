@@ -1,0 +1,84 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  display: flex;
+  text-align: center;
+  height: 100vh;
+  align-items: center;
+
+  .play-ctn {
+    display: grid;
+    grid-template-rows: 50% 20% 30%;
+    justify-content: center;
+    align-items: center;
+    width: 400px;
+    max-width: 45%;
+    height: 450px;
+    margin: 0 auto;
+    background: rgb(234, 254, 255);
+    border-radius: 20px;
+    border: 1px solid darkblue;
+  }
+  .btn-ctn {
+    width: 60%;
+    gap: 10px;
+    margin: 0 auto;
+    display: grid;
+    grid-template-rows: 1fr 1fr;
+    grid-template-columns: 1fr 1fr;
+
+    .play-btn {
+      height: 40px;
+    }
+  }
+}
+
+.good {
+  border: 3px solid green;
+}
+.display0 {
+  margin: 10px;
+  height: 60px;
+  width: 60px;
+  background: url(./face0.gif) center/cover;
+}
+.display1 {
+  margin: 10px;
+  height: 60px;
+  width: 60px;
+  background: url(./face1.gif) center/cover;
+}
+.display2 {
+  margin: 10px;
+  height: 60px;
+  width: 60px;
+  background: url(./face2.gif) center/cover;
+}
+.display3 {
+  margin: 10px;
+  height: 60px;
+  width: 60px;
+  background: url(./face3.gif) center/cover;
+}
+.display4 {
+  margin: 10px;
+  height: 60px;
+  width: 60px;
+  background: url(./face4.gif) center/cover;
+}
+.display5 {
+  margin: 10px;
+  height: 60px;
+  width: 60px;
+  background: url(./face5.gif) center/cover;
+}
+.display6 {
+  margin: 10px;
+  height: 60px;
+  width: 60px;
+  background: url(./face6.gif) center/cover;
+}
