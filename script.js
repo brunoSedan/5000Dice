@@ -1,52 +1,122 @@
 //***************-----------------VARIABLES---------------***************** */
 //**---------Display************ */
-const throwResult = document.getElementById("dice-throw");
-const AnalyseCtn = document.getElementById("dice-result");
-const nextCtn = document.getElementById("dice-continuer");
-const handData = [];
+const playernb = document.getElementById("player");
 const counterCtn = document.getElementById("dice-counter");
+const counterplayer1 = document.getElementById("counter1");
+const counterplayer2 = document.getElementById("counter2");
 //**---------BTN------------- */
 const playBtn = document.getElementById("first");
 const secondBtn = document.getElementById("second");
 const passBtn = document.getElementById("pass");
-const replayBtn = document.getElementById("replay");
+const nextBtn = document.getElementById("next");
 
 /////////////*********------Dice----*----*********/////////////
-const dice1 = document.getElementById("dice1");
-const dice2 = document.getElementById("dice2");
-const dice3 = document.getElementById("dice3");
-const dice4 = document.getElementById("dice4");
-const dice5 = document.getElementById("dice5");
 const allDice = document.querySelectorAll(".dice");
 ///***********--------Variable----------********** */
 let diceGood = 0;
 let diceSearch = 0;
 let counter = 0;
 let counterSave = 0;
-playBtn.disabled = false;
+let win;
 let diceOne = 0;
 let diceFive = 0;
+let counterp1 = 0;
+let counterp2 = 0;
 
-/*
-1 er creer fonction aleatoire.
-bouton play joue la fonction sur les dés pas good.
+playBtn.disabled = false;
+secondBtn.disabled = true;
+passBtn.disabled = true;
+nextBtn.disabled = true;
 
+let option1 = 0;
+//***---------Bouton--------------- */
+secondBtn.addEventListener("click", () => {
+  secondBtn.disabled = true;
+  console.log(option1);
+  if (option1 == 0) {
+    reset();
+  }
+  if (option1 > 0) {
+    reset();
+    counter = 0;
+    counterSave = 0;
+    counterCtn.textContent = "0";
+    option1 == 0;
+  }
+});
 
-*/
-play();
-function play() {
-  playBtn.addEventListener("click", () => {
-    diceDisplay();
-    searchResult();
-  });
+playBtn.addEventListener("click", () => {
+  playBtn.disabled = true;
+  secondBtn.disabled = true;
+  counterDisplay(win);
+  diceDisplay();
+});
+
+passBtn.addEventListener("click", () => {
+  pass();
+  nextBtn.disabled = false;
+  secondBtn.disabled = true;
+});
+
+nextBtn.addEventListener("click", () => {
+  next(win);
+  option1++;
+  nextBtn.disabled = true;
+  playBtn.disabled = false;
+});
+
+//*****Next */
+function next(win) {
+  switch (win) {
+    case true:
+      secondBtn.disabled = false;
+      break;
+    case false:
+      reset();
+      counter = 0;
+      counterCtn.textContent = 0;
+      playBtn.textContent = "play";
+      break;
+  }
+
+  if (playernb.classList.contains("player1")) {
+    playernb.classList.remove("player1");
+    playernb.classList.add("player2");
+    playernb.textContent = "player2";
+  } else {
+    playernb.classList.remove("player2");
+    playernb.classList.add("player1");
+    playernb.textContent = "player1";
+  }
 }
 
-function counterDisplay() {
-  counter = diceFive * 50 + diceOne * 100 + counterSave;
-  counterCtn.textContent = counter;
-  console.log(diceFive);
+//**--------Fonction Pass-------- */
+function pass() {
+  playBtn.disabled = true;
+  passBtn.disabled = true;
+  if (playernb.classList.contains("player1")) {
+    counterp1 = counterp1 + counter;
+    counterplayer1.textContent = counterp1;
+  }
+  if (playernb.classList.contains("player2")) {
+    counterp2 = counterp2 + counter;
+    counterplayer2.textContent = counterp2;
+  }
 }
 
+/**----------Fonction Counter-------------- */
+
+function counterDisplay(win) {
+  if ((win = true)) {
+    counter = diceFive * 50 + diceOne * 100 + counterSave;
+    counterCtn.textContent = counter;
+  } else {
+    counter = "";
+    counterCtn.textContent = "";
+  }
+}
+
+/**-----------Fonction Research----------------*/
 function searchResult() {
   allDice.forEach((dice) => {
     if (!dice.classList.contains("good") && dice.value == 1) {
@@ -65,41 +135,64 @@ function searchResult() {
   switch (diceSearch) {
     case 0:
       console.log("vous avez perdu");
+      secondBtn.disabled = true;
       playBtn.disabled = true;
-      break;
+      passBtn.disabled = true;
+      nextBtn.disabled = false;
+      counterDisplay(win);
+      counter = 0;
+      counterCtn.textContent = 0;
+      return (win = false);
+
     default:
-      counterDisplay();
+      passBtn.disabled = false;
       secondLancer();
   }
 }
 
+/**----------Fonction Second Lancer ---------------- */
 function secondLancer() {
   switch (diceGood) {
     case 0:
-      console.log("vous avez perdu");
+      nextBtn.disabled = false;
       playBtn.disabled = true;
-      break;
+      passBtn.disabled = true;
+      counterDisplay(win);
+      counter = 0;
+      counterCtn.textContent = 0;
+      return (win = false);
+
     case 5:
-      console.log("vous pouvez tout remettre en jeu");
-      playBtn.textContent = "All Again";
-      allAgain();
-      break;
+      secondBtn.disabled = false;
+      counterDisplay(win);
+      return (win = true);
+
     default:
       diceSearch = 0;
-      console.log("vous pouvez rejouer");
       playBtn.disabled = false;
+      counterDisplay(win);
       playBtn.textContent = "Rejouer";
-      break;
+      return (win = true);
   }
 }
-function allAgain() {
-  playBtn.addEventListener("click", () => {
-    allDice.forEach((dice) => {
-      dice.classList.remove("good");
-      dice.value = "";
-    });
-    play();
+
+/**-----------Function reset-------------**** */
+
+function reset() {
+  allDice.forEach((dice) => {
+    dice.classList.remove("good");
+    dice.value = "";
+    for (i = 0; i <= 6; i++) {
+      dice.classList.remove("display" + i);
+    }
+    dice.classList.add("display0");
   });
+  counterSave = counter;
+  playBtn.disabled = false;
+  diceGood = 0;
+  diceSearch = 0;
+  diceFive = 0;
+  diceOne = 0;
 }
 
 /*-----Math Random---------- */
@@ -109,12 +202,13 @@ function diceDisplay() {
       for (i = 0; i <= 6; i++) {
         dice.classList.remove("display" + i);
       }
-      dice.value = 5;
-      // dice.value = random(1, 6);
+      dice.value = 1;
+      dice.value = random(1, 6);
       dice.classList.add("display" + dice.value);
       dice.classList.remove("display0");
     }
   });
+  searchResult();
 }
 
 /** Fonction Aleatoire */
@@ -123,4 +217,3 @@ function random(min, max) {
   max = Math.floor(max);
   return Math.floor(Math.random() * (max - min + 1)) + min;
 }
-//The maximum is inclusive and the minimum is inclusive

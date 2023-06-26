@@ -12,7 +12,7 @@ body {
 }
 body .play-ctn {
   display: grid;
-  grid-template-rows: 50% 20% 30%;
+  grid-template-rows: 10% 40% 20% 30%;
   justify-content: center;
   align-items: center;
   width: 400px;
@@ -86,4 +86,4 @@ body .btn-ctn .play-btn {
   height: 60px;
   width: 60px;
   background: url(./face6.gif) center/cover;
-}/*# sourceMappingURL=style.css.map */
+} /*# sourceMappingURL=style.css.map */

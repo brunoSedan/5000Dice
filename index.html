@@ -8,6 +8,7 @@
   </head>
   <body>
     <div class="play-ctn">
+      <h2 id="player" class="player1">player1</h2>
       <div class="dice-ctn">
         <button id="dice1" class="dice display0"></button>
         <button id="dice2" class="dice display0"></button>
@@ -16,14 +17,22 @@
         <button id="dice5" class="dice display0"></button>
       </div>
       <div class="btn-ctn">
-        <button id="first" class="play-btn">play</button>
-        <button id="pass" class="play-btn">pass</button>
+        <button id="first" type="button " class="play-btn play">play</button>
+        <button id="second" type="button" class="play-btn second">
+          Tout roujouer
+        </button>
+        <button id="pass" type="button " class="play-btn pass">pass</button>
+        <button id="next" type="button " class="play-btn next">
+          Next Player
+        </button>
       </div>
       <div class="message-ctn">
-        <div id="dice-throw"></div>
-        <div id="dice-result"></div>
-        <div id="dice-continuer"></div>
-        <div id="dice-counter"></div>
+        <span>Point :</span>
+        <div id="dice-counter" class="counter">000</div>
+        <span>Joueur 1:</span>
+        <div id="counter1" class="counter">000</div>
+        <span>Joueur 2:</span>
+        <div id="counter2" class="counter">000</div>
       </div>
     </div>
 
