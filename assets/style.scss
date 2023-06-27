@@ -1,3 +1,19 @@
+@font-face {
+  font-family: "titre";
+  src: url(./GasoekOne-Regular.ttf);
+}
+@font-face {
+  font-family: "bouton";
+  src: url(./Oswald-Regular.ttf);
+}
+
+$font2: bouton, sans-serif;
+$font1: titre, sans-serif;
+$jaune: #f3d250;
+$rouge: #f78888;
+$blanc: #ececec;
+$bleuclair: #90ccf4;
+$bleufonce: #5da2d5;
 * {
   margin: 0;
   padding: 0;
@@ -6,79 +22,170 @@
 
 body {
   display: flex;
+  flex-direction: column;
+  justify-content: center;
   text-align: center;
   height: 100vh;
   align-items: center;
-
+  background-color: $blanc;
+  h1 {
+    font-family: $font1;
+    font-size: 4rem;
+    font-weight: 200;
+    letter-spacing: 3px;
+    color: $rouge;
+  }
+  p {
+    font-family: $font2;
+    font-weight: 100;
+    font-size: 1.2rem;
+    color: $blanc;
+  }
   .play-ctn {
     display: grid;
-    grid-template-rows: 50% 20% 30%;
+    grid-template-rows: 15% 35% 20% 30%;
     justify-content: center;
     align-items: center;
     width: 400px;
-    max-width: 45%;
-    height: 450px;
+    max-width: 85%;
+    height: 700px;
+    padding: 10px;
     margin: 0 auto;
-    background: rgb(234, 254, 255);
-    border-radius: 20px;
-    border: 1px solid darkblue;
-  }
-  .btn-ctn {
-    width: 60%;
-    gap: 10px;
-    margin: 0 auto;
-    display: grid;
-    grid-template-rows: 1fr 1fr;
-    grid-template-columns: 1fr 1fr;
+    background: $bleufonce;
+    border-radius: 10px;
+    box-shadow: 2px 2px 1px 2px $bleuclair;
 
-    .play-btn {
-      height: 40px;
+    h2 {
+      text-transform: uppercase;
+      letter-spacing: 8px;
+      font-weight: 100;
+      font-size: 2.2rem;
+      color: #f3d250;
+      font-family: $font1;
+      border-bottom: 3px solid $bleuclair;
+      border-top: 3px solid $bleuclair;
+    }
+    .dice-ctn {
+      // padding: 10px;
+      display: grid;
+      grid-template-rows: 1fr 1fr;
+      text-align: center;
+      justify-content: center;
+      align-items: center;
+      // box-sizing: border-box;
+      div {
+        display: flex;
+        justify-content: center;
+      }
+      .dice {
+        margin: 10px;
+        border: none;
+        box-sizing: border-box;
+        height: 60px;
+        width: 60px;
+      }
+      .good {
+        position: relative;
+      }
+      .good::after {
+        position: absolute;
+        content: "";
+        height: 60px;
+        width: 60px;
+        transform: translate(-50%, -50%);
+        mix-blend-mode: multiply;
+        background-color: $rouge;
+      }
+      .display0 {
+        background: url(./face0.gif) center/cover;
+      }
+      .display1 {
+        transition: 0.5s ease-in;
+        background: url(./face1.gif) center/cover;
+      }
+      .display2 {
+        transition: 0.5s ease-in;
+        background: url(./face2.gif) center/cover;
+      }
+      .display3 {
+        transition: 0.5s ease-in;
+        background: url(./face3.gif) center/cover;
+      }
+      .display4 {
+        transition: 0.5s ease-in;
+        background: url(./face4.gif) center/cover;
+      }
+      .display5 {
+        transition: 0.5s ease-in;
+        background: url(./face5.gif) center/cover;
+      }
+      .display6 {
+        transition: 0.5s ease-in;
+        background: url(./face6.gif) center/cover;
+      }
+      .displayloose {
+        transition: 1s ease-in;
+        background: url(./faceloose.gif) center/cover;
+      }
+    }
+
+    .btn-ctn {
+      width: 80%;
+      gap: 20px;
+      margin: 0 auto;
+      display: grid;
+      grid-template-rows: 1fr 1fr;
+      grid-template-columns: 1fr 1fr;
+
+      .play-btn {
+        align-items: center;
+        border: none;
+        font-family: $font2;
+        font-size: 1rem;
+        border-radius: 5px;
+        height: 50px;
+        color: $bleufonce;
+        line-height: 18px;
+        letter-spacing: 1px;
+        font-weight: 500;
+        text-transform: uppercase;
+      }
+      .play-btn:hover:enabled {
+        cursor: pointer;
+        font-weight: 800;
+        color: $rouge;
+        transform: translate(-3px, -3px);
+        box-shadow: 2px 2px 1px 2px $bleuclair;
+      }
+      .play-btn:focus:enabled {
+        background: $rouge;
+        box-shadow: -1px -1px 1px 1px $jaune;
+        color: $jaune;
+        transform: translate(3px, 3px);
+      }
+    }
+    .message-ctn {
+      // background: $bleuclair;
+      font-family: $font2;
+      text-transform: uppercase;
+      color: $blanc;
+      width: 100%;
+      background-color: $bleuclair;
+      border: 1px solid $bleuclair;
+      border-radius: 10px;
+      padding: 10px;
+      .player-ctn {
+        margin: 0 auto;
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        grid-template-rows: 1fr 1fr;
+        justify-content: center;
+      }
+      .point {
+        justify-content: center;
+        padding-bottom: 20px;
+        display: flex;
+      }
     }
   }
-}
-
-.good {
-  border: 3px solid green;
-}
-.display0 {
-  margin: 10px;
-  height: 60px;
-  width: 60px;
-  background: url(./face0.gif) center/cover;
-}
-.display1 {
-  margin: 10px;
-  height: 60px;
-  width: 60px;
-  background: url(./face1.gif) center/cover;
-}
-.display2 {
-  margin: 10px;
-  height: 60px;
-  width: 60px;
-  background: url(./face2.gif) center/cover;
-}
-.display3 {
-  margin: 10px;
-  height: 60px;
-  width: 60px;
-  background: url(./face3.gif) center/cover;
-}
-.display4 {
-  margin: 10px;
-  height: 60px;
-  width: 60px;
-  background: url(./face4.gif) center/cover;
-}
-.display5 {
-  margin: 10px;
-  height: 60px;
-  width: 60px;
-  background: url(./face5.gif) center/cover;
-}
-.display6 {
-  margin: 10px;
-  height: 60px;
-  width: 60px;
-  background: url(./face6.gif) center/cover;
 }

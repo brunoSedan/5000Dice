@@ -7,19 +7,27 @@
     <link rel="stylesheet" href="./assets/style.css" />
   </head>
   <body>
+    <h1>5000 DICE</h1>
     <div class="play-ctn">
-      <h2 id="player" class="player1">player1</h2>
+      <div class="top">
+        <h2 id="player" class="player1">player1</h2>
+        <p>Manche:<span id="round">1</span></p>
+      </div>
       <div class="dice-ctn">
-        <button id="dice1" class="dice display0"></button>
-        <button id="dice2" class="dice display0"></button>
-        <button id="dice3" class="dice display0"></button>
-        <button id="dice4" class="dice display0"></button>
-        <button id="dice5" class="dice display0"></button>
+        <div>
+          <button id="dice1" class="dice display0"></button>
+          <button id="dice2" class="dice display0"></button>
+          <button id="dice3" class="dice display0"></button>
+        </div>
+        <div>
+          <button id="dice4" class="dice display0"></button>
+          <button id="dice5" class="dice display0"></button>
+        </div>
       </div>
       <div class="btn-ctn">
         <button id="first" type="button " class="play-btn play">play</button>
         <button id="second" type="button" class="play-btn second">
-          Tout roujouer
+          Tout rejouer
         </button>
         <button id="pass" type="button " class="play-btn pass">pass</button>
         <button id="next" type="button " class="play-btn next">
@@ -27,12 +35,18 @@
         </button>
       </div>
       <div class="message-ctn">
-        <span>Point :</span>
-        <div id="dice-counter" class="counter">000</div>
-        <span>Joueur 1:</span>
-        <div id="counter1" class="counter">000</div>
-        <span>Joueur 2:</span>
-        <div id="counter2" class="counter">000</div>
+        <div class="point">
+          <span>Point :</span>
+          <div id="dice-counter" class="counter">000</div>
+        </div>
+
+        <div class="player-ctn">
+          <span id="j1">Joueur 1: </span>
+          <div id="counter1" class="counter">000</div>
+
+          <span id="j2">Joueur 2: </span>
+          <div id="counter2" class="counter">000</div>
+        </div>
       </div>
     </div>
 

@@ -1,9 +1,13 @@
 //***************-----------------VARIABLES---------------***************** */
 //**---------Display************ */
 const playernb = document.getElementById("player");
+const roundSpan = document.getElementById("round");
 const counterCtn = document.getElementById("dice-counter");
 const counterplayer1 = document.getElementById("counter1");
 const counterplayer2 = document.getElementById("counter2");
+const j1Span = document.getElementById("j1");
+const j2Span = document.getElementById("j2");
+
 //**---------BTN------------- */
 const playBtn = document.getElementById("first");
 const secondBtn = document.getElementById("second");
@@ -22,7 +26,9 @@ let diceOne = 0;
 let diceFive = 0;
 let counterp1 = 0;
 let counterp2 = 0;
-
+let roundctn = 1;
+//***************--------DEPART DISPLAY-------------*********** */
+j1Span.style.color = "#f3d250";
 playBtn.disabled = false;
 secondBtn.disabled = true;
 passBtn.disabled = true;
@@ -41,12 +47,13 @@ secondBtn.addEventListener("click", () => {
     counter = 0;
     counterSave = 0;
     counterCtn.textContent = "0";
-    option1 == 0;
+    option1 = 0;
   }
 });
 
 playBtn.addEventListener("click", () => {
   playBtn.disabled = true;
+  roundSpan.textContent = roundctn;
   secondBtn.disabled = true;
   counterDisplay(win);
   diceDisplay();
@@ -61,6 +68,10 @@ passBtn.addEventListener("click", () => {
 nextBtn.addEventListener("click", () => {
   next(win);
   option1++;
+
+  allDice.forEach((dice) => {
+    dice.classList.remove("displayloose");
+  });
   nextBtn.disabled = true;
   playBtn.disabled = false;
 });
@@ -83,10 +94,15 @@ function next(win) {
     playernb.classList.remove("player1");
     playernb.classList.add("player2");
     playernb.textContent = "player2";
+    j1Span.style.color = "#ececec";
+    j2Span.style.color = "#f3d250";
   } else {
     playernb.classList.remove("player2");
     playernb.classList.add("player1");
     playernb.textContent = "player1";
+    j2Span.style.color = "#ececec";
+    j1Span.style.color = "#f3d250";
+    roundctn++;
   }
 }
 
@@ -134,6 +150,10 @@ function searchResult() {
   });
   switch (diceSearch) {
     case 0:
+      allDice.forEach((dice) => {
+        dice.classList.add("displayloose");
+      });
+      playernb.textContent = "LOOSER";
       console.log("vous avez perdu");
       secondBtn.disabled = true;
       playBtn.disabled = true;
@@ -154,6 +174,11 @@ function searchResult() {
 function secondLancer() {
   switch (diceGood) {
     case 0:
+      allDice.forEach((dice) => {
+        dice.classList.add("displayloose");
+      });
+      playernb.textContent = "LOOSER";
+
       nextBtn.disabled = false;
       playBtn.disabled = true;
       passBtn.disabled = true;
@@ -164,6 +189,7 @@ function secondLancer() {
 
     case 5:
       secondBtn.disabled = false;
+      option1 = 0;
       counterDisplay(win);
       return (win = true);
 
@@ -203,17 +229,44 @@ function diceDisplay() {
         dice.classList.remove("display" + i);
       }
       dice.value = 1;
-      dice.value = random(1, 6);
-      dice.classList.add("display" + dice.value);
-      dice.classList.remove("display0");
+
+      rolldice(dice);
     }
   });
   searchResult();
 }
-
+function rolldice(dice) {
+  dice.value = random(1, 6);
+  dice.classList.add("display" + dice.value);
+  dice.classList.remove("display0");
+}
+function AniDice() {
+  MyVar = setInterval(rolldice, 200);
+}
 /** Fonction Aleatoire */
 function random(min, max) {
   min = Math.ceil(min);
   max = Math.floor(max);
   return Math.floor(Math.random() * (max - min + 1)) + min;
 }
+
+function stopDice() {
+  clearInterval(MyVar), 500;
+}
+
+/*** 
+<script>
+function AniDice()
+{
+MyVar=setInterval(rolldice,20)
+}
+
+function rolldice()
+{
+var ranNum = Math.floor( 1 + Math.random() * 6 );
+document.getElementById("dice").innerHTML = ranNum;
+
+}
+function stopDice()
+{clearInterval(MyVar);}
+</script>**/
