@@ -39,7 +39,7 @@ body .container {
 }
 body .menu-ctn {
   display: grid;
-  grid-template-rows: 10% 20% 40% 20% 10%;
+  grid-template-rows: 15% 15% 40% 15% 15%;
   justify-content: center;
   align-items: center;
   height: 700px;
@@ -104,8 +104,9 @@ body .menu-ctn .inputname:focus {
   border: none;
   outline: none;
 }
-body .menu-ctn .inputname[disabled] {
+body .menu-ctn .disabled {
   background-color: #f78888;
+  display: read-only;
 }
 body .menu-ctn .inputlabel {
   display: flex;

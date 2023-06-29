@@ -1,4 +1,78 @@
 //***************-----------------VARIABLES---------------***************** */
+//****----------VARIABLE SETTINGS-----------**********/
+//*-----PLAYER NUMBER-------- *//
+const playInp1 = document.getElementById("1player");
+const playInp2 = document.getElementById("2player");
+const playInp3 = document.getElementById("3player");
+const playInp4 = document.getElementById("4player");
+const allplayInp = document.querySelectorAll(".radio-number");
+let numberPlayer;
+let newPlayers;
+//**----PLAYER NAME-------**/
+const playName1 = document.getElementById("player1name");
+const playName2 = document.getElementById("player2name");
+const playName3 = document.getElementById("player3name");
+const playName4 = document.getElementById("player4name");
+const allPlayName = document.querySelectorAll(".inputname");
+//**-----GAME POINT------- **/
+const game3000 = document.getElementById("3000point");
+const game5000 = document.getElementById("5000point");
+const game8000 = document.getElementById("8000point");
+const gameRadiobtns = document.querySelectorAll(".pointradio");
+//*******-------BTN-------***** */
+const submitGame = document.getElementById("submitgame");
+///********------END OF VARIABLE SETTINGS------ *******/
+
+//********---------SETTING SCRIPT---------------------- */
+
+/*** PLayer number Fonction */
+allplayInp.forEach((input) => {
+  input.addEventListener("click", () => {
+    numberPlayer = input.value;
+
+    for (i = 1; i <= 4; i++) {
+      newPlayers = [...allPlayName][[...allPlayName].length - i];
+      if (numberPlayer <= i) {
+        newPlayers.classList.remove("disabled");
+        newPlayers.disabled = false;
+      } else {
+        newPlayers.disabled = true;
+        newPlayers.classList.add("disabled");
+      }
+    }
+  });
+});
+
+/**Player Name***/
+
+//**Game Point */
+
+//**Submit save plyer name and game point */
+submitGame.addEventListener("click", () => {
+  let selectedGame;
+  let selectedName;
+  for (const gameRadioBtn of gameRadiobtns) {
+    if (gameRadioBtn.checked) {
+      selectedGame = gameRadioBtn.value;
+      break;
+    }
+  }
+  allPlayName.forEach((name) => {
+    if (!name.classList.contains("disabled")) {
+      // console.log(name.value);
+      if (name.value >= -1) {
+        console.log(name.placeholder);
+      } else {
+        console.log(name.value);
+      }
+    }
+  });
+
+  console.log(selectedGame);
+});
+
+///*******---------END SETTING SCRIPT----------- */
+//-******---------VARIABLE GAME---------*************///
 //**---------Display************ */
 const playernb = document.getElementById("player");
 const roundSpan = document.getElementById("round");
@@ -27,6 +101,8 @@ let diceFive = 0;
 let counterp1 = 0;
 let counterp2 = 0;
 let roundctn = 1;
+
+///***********--------GAME SCRIPT--------*********** */
 //***************--------DEPART DISPLAY-------------*********** */
 j1Span.style.color = "#f3d250";
 playBtn.disabled = false;
