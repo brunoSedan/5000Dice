@@ -8,7 +8,132 @@
   </head>
   <body>
     <h1>5000 DICE</h1>
-    <div class="play-ctn">
+    <!--------------------SETTING------------------- -->
+
+    <div class="menu-ctn container">
+      <h2>GAME SET</h2>
+
+      <div class="playnbr-ctn">
+        <h3>Player Number</h3>
+        <div>
+          <div class="inputlabel">
+            <input
+              class="radio"
+              type="radio"
+              id="1player"
+              name="playernbr"
+              value="1"
+              checked
+            />
+            <label for="number">1</label>
+          </div>
+          <div class="inputlabel">
+            <input
+              class="radio"
+              type="radio"
+              id="2player"
+              name="playernbr"
+              value="2"
+            />
+            <label for="number">2</label>
+          </div>
+          <div class="inputlabel">
+            <input
+              class="radio"
+              type="radio"
+              id="3player"
+              name="playernbr"
+              value="3"
+            />
+            <label for="number">3</label>
+          </div>
+          <div class="inputlabel">
+            <input
+              class="radio"
+              type="radio"
+              id="4player"
+              name="playernbr"
+              value="4"
+            />
+            <label for="number">4</label>
+          </div>
+        </div>
+      </div>
+      <div class="playnm-ctn">
+        <h3>Player Name</h3>
+        <div>
+          <div class="nameinput">
+            <label for="playername" class="label">player1</label>
+            <input
+              class="inputname"
+              id="player1name"
+              type="text"
+              max="12"
+              min="1"
+              placeholder="player1"
+            />
+          </div>
+          <div class="nameinput">
+            <label for="playername" class="label">player2</label>
+            <input
+              class="inputname"
+              id="player2name"
+              type="text"
+              max="12"
+              min="1"
+              placeholder="player2"
+              disabled
+            />
+          </div>
+          <div class="nameinput">
+            <label for="playername" class="label">player3</label>
+            <input
+              class="inputname"
+              id="player3name"
+              type="text"
+              max="12"
+              min="1"
+              placeholder="player3"
+              disabled
+            />
+          </div>
+          <div class="nameinput">
+            <label for="playername" class="label">player4</label>
+            <input
+              class="inputname"
+              id="player4name"
+              type="text"
+              max="12"
+              min="1"
+              placeholder="player4"
+              disabled
+            />
+          </div>
+        </div>
+      </div>
+
+      <div class="point-ctn">
+        <h3>Game point</h3>
+        <div>
+          <div class="inputlabel">
+            <input type="radio" id="3000point" name="pointgame" value="3000" />
+            <label for="pointgame" class="label">3000</label>
+          </div>
+          <div class="inputlabel">
+            <input type="radio" id="5000point" name="pointgame" value="5000" />
+            <label for="pointgame" class="label">5000</label>
+          </div>
+          <div class="inputlabel">
+            <input type="radio" id="8000point" name="pointgame" value="8000" />
+            <label for="pointgame" class="label">8000</label>
+          </div>
+        </div>
+      </div>
+      <input type="submit" class="btn" />
+    </div>
+
+    <!--------------------GAME------------------- -->
+    <div class="play-ctn container">
       <div class="top">
         <h2 id="player" class="player1">player1</h2>
         <p>Manche:<span id="round">1</span></p>

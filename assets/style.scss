@@ -28,6 +28,7 @@ body {
   height: 100vh;
   align-items: center;
   background-color: $blanc;
+
   h1 {
     font-family: $font1;
     font-size: 4rem;
@@ -35,27 +36,29 @@ body {
     letter-spacing: 3px;
     color: $rouge;
   }
-  p {
-    font-family: $font2;
-    font-weight: 100;
-    font-size: 1.2rem;
-    color: $blanc;
-  }
-  .play-ctn {
-    display: grid;
-    grid-template-rows: 15% 35% 20% 30%;
-    justify-content: center;
-    align-items: center;
+
+  .container {
     width: 400px;
     max-width: 85%;
-    height: 700px;
+    // height: 700px;
     padding: 10px;
     margin: 0 auto;
     background: $bleufonce;
     border-radius: 10px;
     box-shadow: 2px 2px 1px 2px $bleuclair;
+  }
+
+  ///***************Setting
+  .menu-ctn {
+    display: grid;
+    grid-template-rows: 10% 20% 40% 20% 10%;
+    justify-content: center;
+    align-items: center;
+    height: 700px;
 
     h2 {
+      margin: 0 auto;
+      width: 80%;
       text-transform: uppercase;
       letter-spacing: 8px;
       font-weight: 100;
@@ -65,8 +68,145 @@ body {
       border-bottom: 3px solid $bleuclair;
       border-top: 3px solid $bleuclair;
     }
+    h3 {
+      text-transform: uppercase;
+      font-family: $font2;
+      font-size: 1.3rem;
+      font-weight: 100;
+      padding-bottom: 10px;
+      letter-spacing: 3px;
+      color: $blanc;
+    }
+    input[type="radio"] {
+      background: #f78888;
+      width: 20px;
+      height: 20px;
+      border: 2px solid $jaune;
+      color: #f3d250;
+    }
+    input[type="radio"]:checked + label {
+      color: $jaune;
+    }
+    label {
+      text-transform: uppercase;
+      font-family: $font2;
+
+      color: #ececec;
+    }
+    input::placeholder {
+      color: $bleufonce;
+      opacity: 1;
+    }
+    .inputname {
+      margin: 5px 20px;
+      width: 50%;
+      background-color: $bleuclair;
+      padding: 2px;
+      border-radius: 10px;
+      border: none;
+      text-align: center;
+      font-family: $font1;
+      color: $blanc;
+      text-transform: uppercase;
+      font-size: 1.2rem;
+      letter-spacing: 2px;
+    }
+    .inputname:focus {
+      background: $blanc;
+      color: $rouge;
+      border: none;
+      outline: none;
+    }
+    .inputname[disabled] {
+      background-color: #f78888;
+    }
+
+    .inputlabel {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+    .playnbr-ctn {
+      display: flex;
+      flex-direction: column;
+      justify-content: space-around;
+      // align-items: center;
+      div {
+        display: flex;
+        justify-content: space-around;
+      }
+    }
+    .point-ctn {
+      display: flex;
+      flex-direction: column;
+      div {
+        display: flex;
+        justify-content: space-around;
+      }
+    }
+
+    .btn {
+      width: 100px;
+      margin: 0 auto;
+      align-items: center;
+      border: none;
+      font-family: $font2;
+      font-size: 1rem;
+      border-radius: 5px;
+      height: 50px;
+      color: $bleufonce;
+      line-height: 18px;
+      letter-spacing: 1px;
+      font-weight: 500;
+      text-transform: uppercase;
+    }
+    .btn:hover:enabled {
+      cursor: pointer;
+      font-weight: 800;
+      color: $rouge;
+      transform: translate(-3px, -3px);
+      box-shadow: 2px 2px 1px 2px $bleuclair;
+    }
+    .btn:focus:enabled {
+      background: $rouge;
+      box-shadow: -1px -1px 1px 1px $jaune;
+      color: $jaune;
+      transform: translate(3px, 3px);
+    }
+  }
+
+  ////*************Game
+  ///
+  .play-ctn {
+    display: none;
+    grid-template-rows: 15% 35% 20% 30%;
+    justify-content: center;
+    align-items: center;
+
+    .top {
+      width: 100%;
+      h2 {
+        margin: 0 auto;
+        width: 80%;
+        text-transform: uppercase;
+        letter-spacing: 8px;
+        font-weight: 100;
+        font-size: 2.2rem;
+        color: #f3d250;
+        font-family: $font1;
+        border-bottom: 3px solid $bleuclair;
+        border-top: 3px solid $bleuclair;
+      }
+
+      p {
+        font-family: $font2;
+        font-weight: 100;
+        font-size: 1.2rem;
+        color: $blanc;
+      }
+    }
     .dice-ctn {
-      // padding: 10px;
+      padding: 50px;
       display: grid;
       grid-template-rows: 1fr 1fr;
       text-align: center;
@@ -131,6 +271,7 @@ body {
 
     .btn-ctn {
       width: 80%;
+      padding: 20px;
       gap: 20px;
       margin: 0 auto;
       display: grid;
@@ -169,7 +310,8 @@ body {
       font-family: $font2;
       text-transform: uppercase;
       color: $blanc;
-      width: 100%;
+      width: 80%;
+      margin: 0 auto;
       background-color: $bleuclair;
       border: 1px solid $bleuclair;
       border-radius: 10px;

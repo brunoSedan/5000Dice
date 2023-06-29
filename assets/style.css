@@ -28,27 +28,25 @@ body h1 {
   letter-spacing: 3px;
   color: #f78888;
 }
-body p {
-  font-family: bouton, sans-serif;
-  font-weight: 100;
-  font-size: 1.2rem;
-  color: #ececec;
-}
-body .play-ctn {
-  display: grid;
-  grid-template-rows: 15% 35% 20% 30%;
-  justify-content: center;
-  align-items: center;
+body .container {
   width: 400px;
   max-width: 85%;
-  height: 700px;
   padding: 10px;
   margin: 0 auto;
   background: #5da2d5;
   border-radius: 10px;
   box-shadow: 2px 2px 1px 2px #90ccf4;
 }
-body .play-ctn h2 {
+body .menu-ctn {
+  display: grid;
+  grid-template-rows: 10% 20% 40% 20% 10%;
+  justify-content: center;
+  align-items: center;
+  height: 700px;
+}
+body .menu-ctn h2 {
+  margin: 0 auto;
+  width: 80%;
   text-transform: uppercase;
   letter-spacing: 8px;
   font-weight: 100;
@@ -58,7 +56,136 @@ body .play-ctn h2 {
   border-bottom: 3px solid #90ccf4;
   border-top: 3px solid #90ccf4;
 }
+body .menu-ctn h3 {
+  text-transform: uppercase;
+  font-family: bouton, sans-serif;
+  font-size: 1.3rem;
+  font-weight: 100;
+  padding-bottom: 10px;
+  letter-spacing: 3px;
+  color: #ececec;
+}
+body .menu-ctn input[type=radio] {
+  background: #f78888;
+  width: 20px;
+  height: 20px;
+  border: 2px solid #f3d250;
+  color: #f3d250;
+}
+body .menu-ctn input[type=radio]:checked + label {
+  color: #f3d250;
+}
+body .menu-ctn label {
+  text-transform: uppercase;
+  font-family: bouton, sans-serif;
+  color: #ececec;
+}
+body .menu-ctn input::placeholder {
+  color: #5da2d5;
+  opacity: 1;
+}
+body .menu-ctn .inputname {
+  margin: 5px 20px;
+  width: 50%;
+  background-color: #90ccf4;
+  padding: 2px;
+  border-radius: 10px;
+  border: none;
+  text-align: center;
+  font-family: titre, sans-serif;
+  color: #ececec;
+  text-transform: uppercase;
+  font-size: 1.2rem;
+  letter-spacing: 2px;
+}
+body .menu-ctn .inputname:focus {
+  background: #ececec;
+  color: #f78888;
+  border: none;
+  outline: none;
+}
+body .menu-ctn .inputname[disabled] {
+  background-color: #f78888;
+}
+body .menu-ctn .inputlabel {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+body .menu-ctn .playnbr-ctn {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+}
+body .menu-ctn .playnbr-ctn div {
+  display: flex;
+  justify-content: space-around;
+}
+body .menu-ctn .point-ctn {
+  display: flex;
+  flex-direction: column;
+}
+body .menu-ctn .point-ctn div {
+  display: flex;
+  justify-content: space-around;
+}
+body .menu-ctn .btn {
+  width: 100px;
+  margin: 0 auto;
+  align-items: center;
+  border: none;
+  font-family: bouton, sans-serif;
+  font-size: 1rem;
+  border-radius: 5px;
+  height: 50px;
+  color: #5da2d5;
+  line-height: 18px;
+  letter-spacing: 1px;
+  font-weight: 500;
+  text-transform: uppercase;
+}
+body .menu-ctn .btn:hover:enabled {
+  cursor: pointer;
+  font-weight: 800;
+  color: #f78888;
+  transform: translate(-3px, -3px);
+  box-shadow: 2px 2px 1px 2px #90ccf4;
+}
+body .menu-ctn .btn:focus:enabled {
+  background: #f78888;
+  box-shadow: -1px -1px 1px 1px #f3d250;
+  color: #f3d250;
+  transform: translate(3px, 3px);
+}
+body .play-ctn {
+  display: none;
+  grid-template-rows: 15% 35% 20% 30%;
+  justify-content: center;
+  align-items: center;
+}
+body .play-ctn .top {
+  width: 100%;
+}
+body .play-ctn .top h2 {
+  margin: 0 auto;
+  width: 80%;
+  text-transform: uppercase;
+  letter-spacing: 8px;
+  font-weight: 100;
+  font-size: 2.2rem;
+  color: #f3d250;
+  font-family: titre, sans-serif;
+  border-bottom: 3px solid #90ccf4;
+  border-top: 3px solid #90ccf4;
+}
+body .play-ctn .top p {
+  font-family: bouton, sans-serif;
+  font-weight: 100;
+  font-size: 1.2rem;
+  color: #ececec;
+}
 body .play-ctn .dice-ctn {
+  padding: 50px;
   display: grid;
   grid-template-rows: 1fr 1fr;
   text-align: center;
@@ -121,6 +248,7 @@ body .play-ctn .dice-ctn .displayloose {
 }
 body .play-ctn .btn-ctn {
   width: 80%;
+  padding: 20px;
   gap: 20px;
   margin: 0 auto;
   display: grid;
@@ -157,7 +285,8 @@ body .play-ctn .message-ctn {
   font-family: bouton, sans-serif;
   text-transform: uppercase;
   color: #ececec;
-  width: 100%;
+  width: 80%;
+  margin: 0 auto;
   background-color: #90ccf4;
   border: 1px solid #90ccf4;
   border-radius: 10px;

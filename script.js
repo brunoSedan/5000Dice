@@ -38,7 +38,7 @@ let option1 = 0;
 //***---------Bouton--------------- */
 secondBtn.addEventListener("click", () => {
   secondBtn.disabled = true;
-  console.log(option1);
+
   if (option1 == 0) {
     reset();
   }
@@ -75,8 +75,22 @@ nextBtn.addEventListener("click", () => {
   nextBtn.disabled = true;
   playBtn.disabled = false;
 });
+//******-------Looser---------****** */
+function loose() {
+  allDice.forEach((dice) => {
+    dice.classList.add("displayloose");
+  });
+  playernb.textContent = "LOOSER";
 
-//*****Next */
+  playBtn.disabled = true;
+  passBtn.disabled = true;
+  nextBtn.disabled = false;
+  counterDisplay(win);
+  counter = 0;
+  counterCtn.textContent = 0;
+}
+
+//*****---------Next ------------**********/
 function next(win) {
   switch (win) {
     case true:
@@ -150,18 +164,8 @@ function searchResult() {
   });
   switch (diceSearch) {
     case 0:
-      allDice.forEach((dice) => {
-        dice.classList.add("displayloose");
-      });
-      playernb.textContent = "LOOSER";
-      console.log("vous avez perdu");
+      loose();
       secondBtn.disabled = true;
-      playBtn.disabled = true;
-      passBtn.disabled = true;
-      nextBtn.disabled = false;
-      counterDisplay(win);
-      counter = 0;
-      counterCtn.textContent = 0;
       return (win = false);
 
     default:
@@ -174,17 +178,7 @@ function searchResult() {
 function secondLancer() {
   switch (diceGood) {
     case 0:
-      allDice.forEach((dice) => {
-        dice.classList.add("displayloose");
-      });
-      playernb.textContent = "LOOSER";
-
-      nextBtn.disabled = false;
-      playBtn.disabled = true;
-      passBtn.disabled = true;
-      counterDisplay(win);
-      counter = 0;
-      counterCtn.textContent = 0;
+      loose();
       return (win = false);
 
     case 5:
