@@ -1,26 +1,17 @@
 //***************-----------------VARIABLES---------------***************** */
 //****----------VARIABLE SETTINGS-----------**********/
 //*-----PLAYER NUMBER-------- *//
-const playInp1 = document.getElementById("1player");
-const playInp2 = document.getElementById("2player");
-const playInp3 = document.getElementById("3player");
-const playInp4 = document.getElementById("4player");
 const allplayInp = document.querySelectorAll(".radio-number");
 let numberPlayer;
 let newPlayers;
+let playerData = [];
 //**----PLAYER NAME-------**/
-const playName1 = document.getElementById("player1name");
-const playName2 = document.getElementById("player2name");
-const playName3 = document.getElementById("player3name");
-const playName4 = document.getElementById("player4name");
 const allPlayName = document.querySelectorAll(".inputname");
 //**-----GAME POINT------- **/
-const game3000 = document.getElementById("3000point");
-const game5000 = document.getElementById("5000point");
-const game8000 = document.getElementById("8000point");
 const gameRadiobtns = document.querySelectorAll(".pointradio");
 //*******-------BTN-------***** */
 const submitGame = document.getElementById("submitgame");
+const menuCtn = document.querySelector(".menu-ctn");
 ///********------END OF VARIABLE SETTINGS------ *******/
 
 //********---------SETTING SCRIPT---------------------- */
@@ -43,9 +34,7 @@ allplayInp.forEach((input) => {
   });
 });
 
-/**Player Name***/
-
-//**Game Point */
+/**Player Name error display***/
 
 //**Submit save plyer name and game point */
 submitGame.addEventListener("click", () => {
@@ -57,17 +46,24 @@ submitGame.addEventListener("click", () => {
       break;
     }
   }
+
   allPlayName.forEach((name) => {
     if (!name.classList.contains("disabled")) {
-      // console.log(name.value);
+      if (name.value.length > 8) {
+        console.log("probleme");
+      }
+
       if (name.value >= -1) {
-        console.log(name.placeholder);
+        playerData.push(name.placeholder);
       } else {
-        console.log(name.value);
+        playerData.push(name.value);
       }
     }
   });
-
+  playerDisplay();
+  playCtn.style.display = "grid";
+  menuCtn.style.display = "none";
+  console.log(playerData[1]);
   console.log(selectedGame);
 });
 
@@ -81,7 +77,8 @@ const counterplayer1 = document.getElementById("counter1");
 const counterplayer2 = document.getElementById("counter2");
 const j1Span = document.getElementById("j1");
 const j2Span = document.getElementById("j2");
-
+const playCtn = document.querySelector(".play-ctn");
+const playCtnName = document.querySelector(".player-ctn");
 //**---------BTN------------- */
 const playBtn = document.getElementById("first");
 const secondBtn = document.getElementById("second");
@@ -104,13 +101,25 @@ let roundctn = 1;
 
 ///***********--------GAME SCRIPT--------*********** */
 //***************--------DEPART DISPLAY-------------*********** */
-j1Span.style.color = "#f3d250";
+// j1Span.style.color = "#f3d250";
 playBtn.disabled = false;
 secondBtn.disabled = true;
 passBtn.disabled = true;
 nextBtn.disabled = true;
 
 let option1 = 0;
+//**********----------PLayer Display----------- */
+
+const playerDisplay = () => {
+  for (i = 0; i < playerData.length; i++) {
+    playCtnName.innerHTML += `
+    <span">${playerData[i]}</span>
+    <div id="counter+${playerData[i]}" class="counter">000</div>
+    
+    `;
+  }
+};
+
 //***---------Bouton--------------- */
 secondBtn.addEventListener("click", () => {
   secondBtn.disabled = true;
