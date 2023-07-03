@@ -106,7 +106,6 @@ body .menu-ctn .inputname:focus {
 }
 body .menu-ctn .disabled {
   background-color: #f78888;
-  display: read-only;
 }
 body .menu-ctn .inputlabel {
   display: flex;
@@ -304,4 +303,7 @@ body .play-ctn .message-ctn .point {
   justify-content: center;
   padding-bottom: 20px;
   display: flex;
+}
+body .play-ctn .message-ctn .current {
+  color: #f78888;
 }/*# sourceMappingURL=style.css.map */

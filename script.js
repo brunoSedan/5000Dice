@@ -63,7 +63,7 @@ submitGame.addEventListener("click", () => {
   playerDisplay();
   playCtn.style.display = "grid";
   menuCtn.style.display = "none";
-  console.log(playerData[1]);
+  console.log(playerData.length);
   console.log(selectedGame);
 });
 
@@ -98,7 +98,7 @@ let diceFive = 0;
 let counterp1 = 0;
 let counterp2 = 0;
 let roundctn = 1;
-
+let counterTime = 2;
 ///***********--------GAME SCRIPT--------*********** */
 //***************--------DEPART DISPLAY-------------*********** */
 // j1Span.style.color = "#f3d250";
@@ -113,11 +113,11 @@ let option1 = 0;
 const playerDisplay = () => {
   for (i = 0; i < playerData.length; i++) {
     playCtnName.innerHTML += `
-    <span">${playerData[i]}</span>
-    <div id="counter+${playerData[i]}" class="counter">000</div>
-    
+    <span >${playerData[i]}</span>
+    <div id="ct${[i + 1]}" class="counter-player">000</div>
     `;
   }
+  document.getElementById("ct1").classList.add("current");
 };
 
 //***---------Bouton--------------- */
@@ -153,6 +153,12 @@ passBtn.addEventListener("click", () => {
 nextBtn.addEventListener("click", () => {
   next(win);
   option1++;
+  if (counterTime >= playerData.length) {
+    counterTime = 1;
+    roundctn++;
+  } else {
+    counterTime++;
+  }
 
   allDice.forEach((dice) => {
     dice.classList.remove("displayloose");
@@ -189,34 +195,28 @@ function next(win) {
       break;
   }
 
-  if (playernb.classList.contains("player1")) {
-    playernb.classList.remove("player1");
-    playernb.classList.add("player2");
-    playernb.textContent = "player2";
-    j1Span.style.color = "#ececec";
-    j2Span.style.color = "#f3d250";
-  } else {
-    playernb.classList.remove("player2");
-    playernb.classList.add("player1");
-    playernb.textContent = "player1";
-    j2Span.style.color = "#ececec";
-    j1Span.style.color = "#f3d250";
-    roundctn++;
-  }
+  const allCounter = document.querySelectorAll(".counter-player");
+  allCounter.forEach((counterName) => {
+    let counterNumber = counterName.id.charAt(2);
+    if (counterNumber == counterTime) {
+      counterName.classList.add("current");
+    } else {
+      counterName.classList.remove("current");
+    }
+  });
 }
 
 //**--------Fonction Pass-------- */
 function pass() {
   playBtn.disabled = true;
   passBtn.disabled = true;
-  if (playernb.classList.contains("player1")) {
-    counterp1 = counterp1 + counter;
-    counterplayer1.textContent = counterp1;
-  }
-  if (playernb.classList.contains("player2")) {
-    counterp2 = counterp2 + counter;
-    counterplayer2.textContent = counterp2;
-  }
+
+  const allCounter = document.querySelectorAll(".counter-player");
+  allCounter.forEach((counterName) => {
+    if (counterName.classList.contains("current")) {
+      counterName.textContent = +counterName.textContent + counter;
+    }
+  });
 }
 
 /**----------Fonction Counter-------------- */
@@ -332,20 +332,3 @@ function random(min, max) {
 function stopDice() {
   clearInterval(MyVar), 500;
 }
-
-/*** 
-<script>
-function AniDice()
-{
-MyVar=setInterval(rolldice,20)
-}
-
-function rolldice()
-{
-var ranNum = Math.floor( 1 + Math.random() * 6 );
-document.getElementById("dice").innerHTML = ranNum;
-
-}
-function stopDice()
-{clearInterval(MyVar);}
-</script>**/
