@@ -27,6 +27,17 @@ body h1 {
   font-weight: 200;
   letter-spacing: 3px;
   color: #f78888;
+  margin-top: 40px;
+}
+@media screen and (max-width: 500px) {
+  body h1 {
+    font-size: 3rem;
+  }
+}
+@media screen and (max-width: 350px) {
+  body h1 {
+    font-size: 2rem;
+  }
 }
 body .container {
   width: 400px;
@@ -36,6 +47,13 @@ body .container {
   background: #5da2d5;
   border-radius: 10px;
   box-shadow: 2px 2px 1px 2px #90ccf4;
+  margin-bottom: 40px;
+}
+@media screen and (max-width: 500px) {
+  body .container {
+    max-width: 95%;
+    margin: 0 auto;
+  }
 }
 body .menu-ctn {
   display: grid;
@@ -55,6 +73,12 @@ body .menu-ctn h2 {
   font-family: titre, sans-serif;
   border-bottom: 3px solid #90ccf4;
   border-top: 3px solid #90ccf4;
+}
+@media screen and (max-width: 500px) {
+  body .menu-ctn h2 {
+    font-family: bouton, sans-serif;
+    font-size: 1.5rem;
+  }
 }
 body .menu-ctn h3 {
   text-transform: uppercase;
@@ -97,6 +121,11 @@ body .menu-ctn .inputname {
   text-transform: uppercase;
   font-size: 1.2rem;
   letter-spacing: 2px;
+}
+@media screen and (max-width: 500px) {
+  body .menu-ctn .inputname {
+    width: 60%;
+  }
 }
 body .menu-ctn .inputname:focus {
   background: #ececec;
@@ -177,6 +206,12 @@ body .play-ctn .top h2 {
   font-family: titre, sans-serif;
   border-bottom: 3px solid #90ccf4;
   border-top: 3px solid #90ccf4;
+}
+@media screen and (max-width: 500px) {
+  body .play-ctn .top h2 {
+    font-family: bouton, sans-serif;
+    font-size: 1.5rem;
+  }
 }
 body .play-ctn .top p {
   font-family: bouton, sans-serif;
