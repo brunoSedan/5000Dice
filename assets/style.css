@@ -39,14 +39,24 @@ body h1 {
     font-size: 2rem;
   }
 }
+body .color1 {
+  background: #5da2d5;
+  box-shadow: 2px 2px 1px 2px #90ccf4;
+}
+body .color2 {
+  background: #5dd561;
+  box-shadow: 2px 2px 1px 2px #90f49d;
+}
+body .colorloose {
+  background: #9d2121;
+  box-shadow: 2px 2px 1px 2px #f49090;
+}
 body .container {
   width: 400px;
   max-width: 85%;
   padding: 10px;
   margin: 0 auto;
-  background: #5da2d5;
   border-radius: 10px;
-  box-shadow: 2px 2px 1px 2px #90ccf4;
   margin-bottom: 40px;
 }
 @media screen and (max-width: 500px) {

@@ -14,6 +14,15 @@ $rouge: #f78888;
 $blanc: #ececec;
 $bleuclair: #90ccf4;
 $bleufonce: #5da2d5;
+$vertclair: #90f49d;
+$vertfonce: #5dd561;
+$violetclair: #ca90f4;
+$violetfonce: #af5dd5;
+$jauneclair: #d9f490;
+$jaunefonce: #c3d55d;
+$rougeclair: #f49090;
+$rougefonce: #9d2121;
+
 * {
   margin: 0;
   padding: 0;
@@ -44,16 +53,27 @@ body {
       font-size: 2rem;
     }
   }
+  .color1 {
+    background: $bleufonce;
+    box-shadow: 2px 2px 1px 2px $bleuclair;
+  }
+  .color2 {
+    background: $vertfonce;
+    box-shadow: 2px 2px 1px 2px $vertclair;
+  }
+  .colorloose {
+    background: $rougefonce;
+    box-shadow: 2px 2px 1px 2px $rougeclair;
+  }
 
   .container {
     width: 400px;
     max-width: 85%;
-
     padding: 10px;
     margin: 0 auto;
-    background: $bleufonce;
+
     border-radius: 10px;
-    box-shadow: 2px 2px 1px 2px $bleuclair;
+
     margin-bottom: 40px;
 
     @media screen and (max-width: 500px) {

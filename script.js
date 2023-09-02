@@ -79,6 +79,7 @@ const j1Span = document.getElementById("j1");
 const j2Span = document.getElementById("j2");
 const playCtn = document.querySelector(".play-ctn");
 const playCtnName = document.querySelector(".player-ctn");
+
 //**---------BTN------------- */
 const playBtn = document.getElementById("first");
 const secondBtn = document.getElementById("second");
@@ -152,6 +153,8 @@ passBtn.addEventListener("click", () => {
 
 nextBtn.addEventListener("click", () => {
   next(win);
+  playernb.textContent =
+    document.querySelector(".current").previousElementSibling.textContent;
   option1++;
   if (counterTime >= playerData.length) {
     counterTime = 1;
@@ -165,6 +168,21 @@ nextBtn.addEventListener("click", () => {
   });
   nextBtn.disabled = true;
   playBtn.disabled = false;
+  /*change color background*/
+  let currentId = document.querySelector(".current").id;
+  // if (currentId === ct1) {
+  //   playCtn.style.background = "#5da2d5";
+  // }
+  // if (currentId === ct2) {
+  //   playCtn.style.background = "#5dd561";
+  // }
+  // if (currentId === ct3) {
+  //   playCtn.style.background = "#af5dd5";
+  // }
+  // if (currentId === ct4) {
+  //   playCtn.style.background = "#c3d55d";
+  // }
+  console.log(currentId);
 });
 //******-------Looser---------****** */
 function loose() {
@@ -172,13 +190,14 @@ function loose() {
     dice.classList.add("displayloose");
   });
   playernb.textContent = "LOOSER";
-
   playBtn.disabled = true;
   passBtn.disabled = true;
   nextBtn.disabled = false;
   counterDisplay(win);
   counter = 0;
   counterCtn.textContent = 0;
+  /*change color*/
+  playCtn.style.background = "#9d2121";
 }
 
 //*****---------Next ------------**********/
@@ -276,7 +295,7 @@ function secondLancer() {
       diceSearch = 0;
       playBtn.disabled = false;
       counterDisplay(win);
-      playBtn.textContent = "Rejouer";
+      playBtn.textContent = "replay";
       return (win = true);
   }
 }
